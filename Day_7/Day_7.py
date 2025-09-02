@@ -24,13 +24,13 @@ def Compute_Equation(number_list, operator_list: str):
     total = number_list[0]
 
     for k, char in enumerate(operator_list):
-        if int(char) == 0:
+        if char == '0':
             test_print('+', end='')
             total *= number_list[k+1]
-        elif int(char) == 1:
+        elif char == '1':
             test_print('*', end='')
             total += number_list[k+1]
-        elif int(char) == 2:
+        elif char == '2':
             test_print('|', end='')
             total = int(str(total) + str(number_list[k+1]))
 
