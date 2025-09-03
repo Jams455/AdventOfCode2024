@@ -1,12 +1,13 @@
-from formatting_fns import *
+from utils.helper import *
 import numpy as np
 import re
 import parse
 
-text = ""
-with open("Day_3_Input.txt") as f:
-  for x in f:
-    text += x
+DAY_NUM = 3
+TEST = False
+
+with open(get_input_file_str(DAY_NUM, TEST)) as f:
+    text = f.read()
 
 ##########################
 part1_start = start_part_1(3)

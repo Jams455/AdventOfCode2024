@@ -1,7 +1,10 @@
-from formatting_fns import *
+from utils.helper import *
 import numpy as np
 
-rows = np.loadtxt("Day_4_Input.txt", unpack=True, delimiter=None, dtype=str)
+DAY_NUM = 4
+TEST = False
+
+rows = np.loadtxt(get_input_file_str(DAY_NUM, TEST), unpack=True, delimiter=None, dtype=str)
 
 ##########################
 part1_start = start_part_1(4)

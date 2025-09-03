@@ -1,8 +1,11 @@
 import numpy as np
-from formatting_fns import *
+from utils.helper import *
 from collections import defaultdict
 
-with open("Day_5_Input.txt") as f:
+DAY_NUM = 5
+TEST = False
+
+with open(get_input_file_str(DAY_NUM, TEST)) as f:
     lines = [line.strip() for line in f]
 
 all_pages = set()

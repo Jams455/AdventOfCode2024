@@ -1,10 +1,13 @@
-from formatting_fns import *
+from utils.helper import *
 import numpy as np
+
+DAY_NUM = 7
+TEST = False
 
 targets = []
 numbers = []
 
-with open("Day_7_Input.txt") as i_f:
+with open(get_input_file_str(DAY_NUM, TEST)) as i_f:
     for i_line in i_f:
         i_target, i_number_list = i_line.split(':')
         targets.append(int(i_target))
@@ -12,7 +15,7 @@ with open("Day_7_Input.txt") as i_f:
         numbers.append(np.array(i_number_list, dtype=np.int_))
 
 ##########################
-part1_start = start_part_1(1)
+part1_start = start_part_1(DAY_NUM)
 ######### PART 1 #########
 
 def Compute_Equation(number_list, operator_list: str, target):

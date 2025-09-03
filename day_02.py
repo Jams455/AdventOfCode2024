@@ -1,8 +1,11 @@
-from formatting_fns import *
+from utils.helper import *
 import numpy as np
 
+DAY_NUM = 2
+TEST = False
+
 reports = []
-with open("Day_2_Input.txt") as f:
+with open(get_input_file_str(DAY_NUM, TEST)) as f:
   for x in f:
     reports.append(np.array(x.split(), dtype=np.int64))
 

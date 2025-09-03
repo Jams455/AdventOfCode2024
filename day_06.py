@@ -1,7 +1,10 @@
-from formatting_fns import *
+from utils.helper import *
 import numpy as np
 
-with open("Day_6_Input.txt") as f:
+DAY_NUM = 6
+TEST = False
+
+with open(get_input_file_str(DAY_NUM, TEST)) as f:
     data = np.array([np.array([*line.strip()]) for line in f])
 
 def Is_In_Limits(nd_array, pos):

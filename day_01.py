@@ -1,8 +1,11 @@
 import numpy as np
-from formatting_fns import *
+from utils.helper import *
 from collections import Counter
 
-left_list, right_list = np.loadtxt("Day_1_Input_Test.txt", delimiter=None, unpack=True, dtype=np.int64)
+DAY_NUM = 1
+TEST = False
+
+left_list, right_list = np.loadtxt(get_input_file_str(DAY_NUM, TEST), delimiter=None, unpack=True, dtype=np.int64)
 
 ##########################
 part1_start = start_part_1(1)

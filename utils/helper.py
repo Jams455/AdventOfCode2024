@@ -25,3 +25,5 @@ def end_part(part_answer, part_start, part_num):
     print(f"Part {part_num} time:\t\t{round((part_stop - part_start)*1e6)} μs")
     print(f"Part {part_num} memory:\t\t{peak:,} bytes\n")
 
+def get_input_file_str(day_num: int, test: bool):
+    return f"Inputs/day_{day_num:02}_input{'_test' if test else ''}.txt"
