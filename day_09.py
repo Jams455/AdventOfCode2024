@@ -1,7 +1,7 @@
 from utils.helper import *
 import numpy as np
 
-DAY_NUM = 9999999999
+DAY_NUM = 9
 TEST = True
 
 # import file
