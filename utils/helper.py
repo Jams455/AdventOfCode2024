@@ -1,5 +1,6 @@
 import time
 import tracemalloc
+import numpy as np
 
 def start_part_1(day_num):
     print("\n*************************************")
@@ -27,3 +28,12 @@ def end_part(part_answer, part_start, part_num):
 
 def get_input_file_str(day_num: int, test: bool):
     return f"Inputs/day_{day_num:02}_input{'_test' if test else ''}.txt"
+
+def Is_In_Limits(arr: np.ndarray, coords: tuple) -> bool:
+    if len(coords) != arr.ndim:
+        return False
+    return all(0 <= c < s for c, s in zip(coords, arr.shape))
+
+def test_print(*args, testing=True, **kwargs):
+    if testing:
+        print(*args, **kwargs)

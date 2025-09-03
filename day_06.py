@@ -2,18 +2,13 @@ from utils.helper import *
 import numpy as np
 
 DAY_NUM = 6
-TEST = False
+TEST = True
 
 with open(get_input_file_str(DAY_NUM, TEST)) as f:
     data = np.array([np.array([*line.strip()]) for line in f])
 
-def Is_In_Limits(nd_array, pos):
-    limits = np.shape(nd_array)
-
-    return 0 <= pos[0] < limits[0] and 0 <= pos[1] < limits[1]
-
 ##########################
-part1_start = start_part_1(6)
+part1_start = start_part_1(DAY_NUM)
 ######### PART 1 #########
 
 part1_answer = 0
