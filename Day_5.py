@@ -1,7 +1,8 @@
 import numpy as np
+from formatting_fns import *
 from collections import defaultdict
 
-with open("Day_5/Day_5_Input.txt") as f:
+with open("Day_5_Input.txt") as f:
     lines = [line.strip() for line in f]
 
 all_pages = set()
@@ -19,14 +20,13 @@ for line in lines:
         update_sequence = np.array([page_num for page_num in line.split(',')], dtype=int)
         updates.append(update_sequence)
 
-for key, value in after_map.items():
-    #print(f"{key}\t:\t{value}")
-    ...
-
+##########################
+part1_start = start_part_1(5)
 ######### PART 1 #########
 
+part1_answer = 0
+
 incorrectly_ordered_updates = []
-total = 0
 
 for update in updates:
     is_correctly_ordered = True
@@ -38,12 +38,13 @@ for update in updates:
             is_correctly_ordered = False
             break
     if is_correctly_ordered:
-        total += update[int((len(update) - 1) / 2)]
+        part1_answer += update[int((len(update) - 1) / 2)]
     else:
         incorrectly_ordered_updates.append(update)
 
-print(f"Part 1 Answer:\t{total}")
-
+##########################
+end_part(part1_answer, part1_start, 1)
+part2_start = start_part_2()
 ######### PART 2 #########
 
 def dfs(node, incorrect_update):
@@ -56,30 +57,27 @@ def dfs(node, incorrect_update):
 
     for next_node in (set(after_map[node]) & set(incorrect_update)):
         if next_node not in visited:
-            visit_stack.append(next_node)
             dfs(next_node, incorrect_update)
             
     visited.add(node)
     visiting.remove(node)
     topo_order.append(node)
 
-corrected_total = 0
+part2_answer = 0
 
 for incorrect_update in incorrectly_ordered_updates:
     visited = set()
     visiting = set()
-    visit_stack = []
     topo_order = []
 
     for node in incorrect_update:
         if node not in visited:
-            visit_stack.append(node)
-
             dfs(node, incorrect_update)
-
             visited.add(node)
 
     corrected_order = [int(x) for x in topo_order[::-1]]
-    corrected_total += corrected_order[int((len(corrected_order) - 1) / 2)]
+    part2_answer += corrected_order[int((len(corrected_order) - 1) / 2)]
 
-print(f"Part 2 Answer:\t{corrected_total}")
+##########################
+end_part(part2_answer, part2_start, 2)
+##########################

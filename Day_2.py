@@ -1,12 +1,14 @@
+from formatting_fns import *
 import numpy as np
 
 reports = []
-with open("Day_2/Day_2_Input.txt") as f:
+with open("Day_2_Input.txt") as f:
   for x in f:
     reports.append(np.array(x.split(), dtype=np.int64))
 
+##########################
+part1_start = start_part_1(2)
 ######### PART 1 #########
-
 
 def Validate_Report(report):
     differences = report[1:] - report[0:-1]
@@ -14,27 +16,28 @@ def Validate_Report(report):
         return True
     return False
 
-
-num_of_safe_reports = 0
+part1_answer = 0
 
 for report in reports:
     if Validate_Report(report):
-        num_of_safe_reports += 1
+        part1_answer += 1
 
-print(f"Number of safe reports without deletes:\t{num_of_safe_reports}")
-
+##########################
+end_part(part1_answer, part1_start, 1)
+part2_start = start_part_2()
 ######### PART 2 #########
 
-num_of_safe_reports = 0
-
+part2_answer = 0
 for report in reports:
     if Validate_Report(report):
-        num_of_safe_reports += 1
+        part2_answer += 1
     else:
         for i in range(report.size):
             new_report = np.delete(report, i)
             if Validate_Report(new_report):
-                num_of_safe_reports += 1
+                part2_answer += 1
                 break
 
-print(f"Number of safe reports with deletes:\t{num_of_safe_reports}")
+##########################
+end_part(part2_answer, part2_start, 2)
+##########################

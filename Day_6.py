@@ -1,6 +1,7 @@
+from formatting_fns import *
 import numpy as np
 
-with open("Day_6/Day_6_Input.txt") as f:
+with open("Day_6_Input.txt") as f:
     data = np.array([np.array([*line.strip()]) for line in f])
 
 def Is_In_Limits(nd_array, pos):
@@ -8,7 +9,11 @@ def Is_In_Limits(nd_array, pos):
 
     return 0 <= pos[0] < limits[0] and 0 <= pos[1] < limits[1]
 
+##########################
+part1_start = start_part_1(6)
 ######### PART 1 #########
+
+part1_answer = 0
 
 visited_positions = []
 
@@ -20,7 +25,6 @@ coords = np.array([x[0] for x in np.where(data == '^')])
 ini_coords = tuple(coords)
 next_coords = coords + dir_from_state[state]
 
-total = 0
 
 while Is_In_Limits(data, next_coords):
     current_symbol = data[tuple(coords)]
@@ -29,7 +33,7 @@ while Is_In_Limits(data, next_coords):
     if next_symbol == '.' or next_symbol == 'x':
         if current_symbol == '.' or current_symbol == '^':
             data[tuple(coords)] = 'x'
-            total += 1
+            part1_answer += 1
             visited_positions.append(tuple(coords))
         coords = next_coords
         next_coords = coords + dir_from_state[state]
@@ -38,15 +42,17 @@ while Is_In_Limits(data, next_coords):
         next_coords = coords + dir_from_state[state]
 
 data[tuple(coords)] = 'x'
-total += 1
+part1_answer += 1
 visited_positions.append(tuple(coords))
 
-print(f"Part 1 Answer:\t{total}")
-
+##########################
+end_part(part1_answer, part1_start, 1)
+part2_start = start_part_2()
 ######### PART 2 #########
 
+part2_answer = 0
+
 mkr_from_state = (0b1000, 0b0100, 0b0010, 0b0001)
-num_of_loops = 0
 
 i_max, j_max = data.shape
 
@@ -63,7 +69,7 @@ for i, j in visited_positions:
 
     while True:
         if history_bitmap[tuple(coords)] & mkr_from_state[state]:
-            num_of_loops += 1
+            part2_answer += 1
             break 
         else:
             history_bitmap[tuple(coords)] |= mkr_from_state[state]
@@ -81,5 +87,7 @@ for i, j in visited_positions:
                 break
 
     data[i, j] = '.'
-    
-print(f"Part 2 Answer:\t{num_of_loops}")
+
+##########################
+end_part(part2_answer, part2_start, 2)
+##########################
