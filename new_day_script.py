@@ -21,9 +21,9 @@ def get_next_day_number(existing_files):
 def create_day_files(day_num):
     # Paths
     py_filename = f"day_{day_num}.py"
-    problem_path = os.path.join(PROBLEMS_DIR, f"Day_{day_num}.txt")
-    input_path = os.path.join(INPUTS_DIR, f"Day_{day_num}_Input.txt")
-    test_input_path = os.path.join(INPUTS_DIR, f"Day_{day_num}_Input_Test.txt")
+    problem_path = os.path.join(PROBLEMS_DIR, f"day_{day_num}.txt")
+    input_path = os.path.join(INPUTS_DIR, f"day_{day_num}_Input.txt")
+    test_input_path = os.path.join(INPUTS_DIR, f"day_{day_num}_Input_Test.txt")
 
     # Create directories
     os.makedirs(PROBLEMS_DIR, exist_ok=True)
