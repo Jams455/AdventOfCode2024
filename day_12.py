@@ -60,7 +60,7 @@ visited = np.zeros_like(data)
 FLAG = 0
 borders = [[], [], [], []]
 
-def visit(plant, i, j):
+def visit2(plant, i, j):
     if not Is_In_Limits(data, (i, j)) or data[i][j] != plant:
         global FLAG
         FLAG = 1
@@ -76,7 +76,7 @@ def visit(plant, i, j):
         perim_addition = 0
 
         for t, (Δi, Δj) in enumerate(TRANSLATIONS):
-            next_area_addition, next_perim_addition = visit(plant, i+Δi, j+Δj)
+            next_area_addition, next_perim_addition = visit2(plant, i+Δi, j+Δj)
             area_addition += next_area_addition
             perim_addition += next_perim_addition
             
@@ -112,7 +112,7 @@ def border_count(borders):
 for i, row in enumerate(data):
     for j, val in enumerate(row):
         curr_plant = data[i][j]
-        area, perim = visit(curr_plant, i, j)
+        area, perim = visit2(curr_plant, i, j)
 
         border_cnt = border_count(borders)
         
